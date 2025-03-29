@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login () {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -15,7 +14,7 @@ function Login () {
     async function handleSubmit(event) {
         event.preventDefault();
       
-        const backendEndpoint = 'http://127.0.0.1:5000';
+        const backendEndpoint = '/validate_login';
 
         try {
             const response = await fetch(backendEndpoint, {
@@ -25,9 +24,9 @@ function Login () {
                 },
                 body: JSON.stringify({'username':username , 'password':password}),
             });
-            
+
             const data = await response.json();
-        
+                    
             if (response.ok) {
                 setErrorBoolean(false);
                 // console.log('Form submission successfull!');
@@ -49,6 +48,7 @@ function Login () {
         <div class="loginbox">
         <form onSubmit={handleSubmit}>
             <h2>Login</h2>
+
             <label for="username">Username:</label>
             <input 
             type="text" 
@@ -56,6 +56,7 @@ function Login () {
             name="username" 
             onChange={(e) => setUsername(e.target.value)}
             required/>
+
             <label for="password">Password:</label>
             <input 
             type="text" 
@@ -63,8 +64,10 @@ function Login () {
             name="password" 
             onChange={(e) => setPassword(e.target.value)}
             required/>
+
             <button type="submit">Login</button>
         </form>
+
         {errorBoolean && (
             <p id="errormessage">{errorMessage}</p>
         )}

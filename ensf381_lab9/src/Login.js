@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 function Login () {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const [submissionError, setSubmissionError] = useState(false);
+    const [errorBoolean, setErrorBoolean] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -27,20 +29,26 @@ function Login () {
             const data = await response.json();
         
             if (response.ok) {
-                console.log('Form submission successfull!');
+                setErrorBoolean(false);
+                // console.log('Form submission successfull!');
                 navigate('/predict')
             } else {
-                setSubmissionError(true)
-                console.error('Form submission failed.');
+                setErrorBoolean(true);
+                // console.error('Form submission failed.');
+                // document.getElementById("errormessage").innerText = "Form submission failed.";
+                setErrorMessage('Invalid Login.');
             }
             } catch (error) {
-                setSubmissionError(true)
-                console.error('Error during form submission:', error);  
+                setErrorBoolean(true);
+                // console.error('Error during form submission: ', error); 
+                // document.getElementById("errormessage").innerText = "Error during form submission: " + error;
+                setErrorMessage('Error during form submission.');
             }
         };
     return (
-        <div>
+        <div class="loginbox">
         <form onSubmit={handleSubmit}>
+            <h2>Login</h2>
             <label for="username">Username:</label>
             <input 
             type="text" 
@@ -48,7 +56,6 @@ function Login () {
             name="username" 
             onChange={(e) => setUsername(e.target.value)}
             required/>
-            <br></br>
             <label for="password">Password:</label>
             <input 
             type="text" 
@@ -56,12 +63,10 @@ function Login () {
             name="password" 
             onChange={(e) => setPassword(e.target.value)}
             required/>
-            <button type="submit">Submit</button>
+            <button type="submit">Login</button>
         </form>
-        {submissionError && (
-            <div>
-                <p>Error Eror!</p>
-            </div>
+        {errorBoolean && (
+            <p id="errormessage">{errorMessage}</p>
         )}
         </div>
     ); 

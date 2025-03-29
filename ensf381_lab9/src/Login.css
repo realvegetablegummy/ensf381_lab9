@@ -1,0 +1,51 @@
+.loginbox {
+    display: flex;
+    flex-direction: column;
+
+    margin: 50px auto;
+    padding: 1rem; /* NOTE: rem -> root em, font-size of <html> */
+
+    width: 400px;
+
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+
+    box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.1); /* NOTE: offset-x, offset-y, blur-radius, spread-radius, colour (r, g, b, alpha -> transparency) */
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+
+    width: 100%;
+
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 0.5rem 1rem;
+
+    width: 100%;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #007BFF;
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #006ee3;
+}
+
+#errormessage {
+    color: red;
+}

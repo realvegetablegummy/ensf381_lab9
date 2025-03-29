@@ -28,20 +28,20 @@ function Login () {
             const data = await response.json();
                     
             if (response.ok) {
-                setErrorBoolean(false);
+                setErrorBoolean(data['success']);
                 // console.log('Form submission successfull!');
                 navigate('/predict')
             } else {
-                setErrorBoolean(true);
+                setErrorBoolean(data['success']);
                 // console.error('Form submission failed.');
                 // document.getElementById("errormessage").innerText = "Form submission failed.";
-                setErrorMessage('Invalid Login.');
+                setErrorMessage(data['message']);
             }
             } catch (error) {
                 setErrorBoolean(true);
                 // console.error('Error during form submission: ', error); 
                 // document.getElementById("errormessage").innerText = "Error during form submission: " + error;
-                setErrorMessage('Error during form submission.');
+                setErrorMessage('Error during form submission: ' + error);
             }
         };
     return (

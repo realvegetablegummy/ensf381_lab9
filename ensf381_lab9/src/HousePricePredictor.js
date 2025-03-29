@@ -51,7 +51,7 @@ function HousePricePredictor () {
         
             if (response.ok) {
                 setPriceBoolean(true);
-                setPrice(data);
+                setPrice(data['predicted_price']);
                 // console.log('price!');
             } else {
                 setPriceBoolean(false);

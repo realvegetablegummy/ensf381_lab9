@@ -1,0 +1,68 @@
+.predictorbox {
+    margin: 40px auto;
+    padding: 24px;
+
+    width: 600px;
+
+    border: 1px solid lightgray;
+    border-radius: 8px;
+
+    box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.1); /* NOTE: offset-x, offset-y, blur-radius, spread-radius, colour (r, g, b, alpha -> transparency) */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding: 8px;
+
+    width: 100%;
+
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+form select {
+    margin-bottom: 12px;
+    padding: 8px;
+
+    width: 100%;
+
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 12px 24px;
+
+    width: 100%;
+
+    border: none;
+    border-radius: 4px;
+
+    background-color: #007BFF;
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #006ee3;
+}
+
+.pricebox {
+    margin-top: 16px;
+    padding: 12px;
+
+    width: 100%;
+
+    border: 1px solid #3C763D;
+    border-radius: 4px;
+
+    background-color: #DFF0D8;
+    font-style: bold;
+}

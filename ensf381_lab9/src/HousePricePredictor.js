@@ -15,10 +15,10 @@ function HousePricePredictor () {
     const [sq_feet, setSqFeet] = useState('');
     const [furnishing, setFurnishing] = useState('');
     const [smoking, setSmoking] = useState('');
-    const [pets, setPets] = useState('');
+    const [pets, setPets] = useState(true);
 
-    const [displayBoolean, setDisplayBoolean] = useState(false);
-    const [displayPrice, setDisplayPrice] = useState('');
+    const [priceBoolean, setPriceBoolean] = useState(false);
+    const [price, setPrice] = useState('');
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -50,15 +50,15 @@ function HousePricePredictor () {
             const data = await response.json();
         
             if (response.ok) {
-                setDisplayBoolean(true);
-                setDisplayPrice(data);
+                setPriceBoolean(true);
+                setPrice(data);
                 // console.log('price!');
             } else {
-                setDisplayBoolean(false);
+                setPriceBoolean(false);
                 // console.error('ermm no price');
             }
             } catch (error) {
-                setDisplayBoolean(false);
+                setPriceBoolean(false);
                 // console.error('error during submission: ', error);
             }
         };
@@ -164,15 +164,17 @@ function HousePricePredictor () {
             id="pets" 
             name="pets" 
             value="yes"
-            onChange={(e) => setPets(e.target.value)} 
-            checked 
+            onChange={(e) => setPets(e.target.checked)} 
+            checked={pets}
             required/>
 
             <button type="submit">Predict</button>
         </form>
 
-        {errorBoolean && (
-            <p id="errormessage">{errorMessage}</p>
+        {priceBoolean && (
+            <div class="pricebox">
+            <p id="price">{price}</p>
+            </div>
         )}
         </div>
     ); 

@@ -7,7 +7,7 @@
 
     width: 400px;
 
-    border: 1px solid #DDDDDD;
+    border: 1px solid lightgray;
     border-radius: 10px;
 
     box-shadow: 2px 3px 10px 0px rgba(0, 0, 0, 0.1); /* NOTE: offset-x, offset-y, blur-radius, spread-radius, colour (r, g, b, alpha -> transparency) */
@@ -24,7 +24,7 @@ form input {
 
     width: 100%;
 
-    border: 1px solid #CCCCCC;
+    border: 1px solid lightgray;
     border-radius: 5px;
 }
 
